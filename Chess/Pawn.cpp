@@ -2,7 +2,7 @@
 
 namespace Chess
 {
-    Chess::Pawn::Pawn(PiecePosition *newPosition, Color color) : Pawn(newPosition, color)
+    Pawn::Pawn(PiecePosition *newPosition, Color color) : Piece(newPosition, color)
     {
         this->canDoubleMove = true;
     }
@@ -12,6 +12,9 @@ namespace Chess
         auto moves = std::vector<PiecePosition>();
 
         auto curPos = this->getPosition();
+
+        auto curHor = curPos->getHorizontalLine();
+        auto curVer = curPos->getVerticalLine();
 
         // Проверить две клетки вперед
         if (this->canDoubleMove)
